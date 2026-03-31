@@ -649,7 +649,7 @@ def defects_from_spin_directory(
             que.append((mid, high, defect_mid, defect_high))
 
         print(
-            f"remaining queue: {len(que)}  visited: {intervals_processed}",
+            f"[Binary search in progress] remaining queue: {len(que)}  visited: {intervals_processed}",
             end="\r",
             flush=True,
         )
