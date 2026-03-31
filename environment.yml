@@ -1,0 +1,17 @@
+name: multi_spin_orientation
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.9
+  - pip
+  - cudatoolkit=11.2
+  - cudnn=8.1.0
+  - numpy=1.26.0
+  - tqdm
+  - mayavi
+  - vtk=9.4.1
+  - plotly
+  - pip:
+    - tensorflow==2.10.1
+    - kaleido==1.2.0
