@@ -751,7 +751,7 @@ def get_trajectory(
         k0, k1 = iters[step_idx], iters[step_idx + 1]
         prev_field = defect_record[k0]
         post_field = defect_record[k1]
-        print(f"trajectory_step prev_iter={k0}, post_iter={k1}")
+        print(f"trajectory_step prev_iter={k0}, post_iter={k1}", end="\r")
 
         prev_typed = field_to_particles(prev_field, n_types)
         post_typed = field_to_particles(post_field, n_types)

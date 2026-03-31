@@ -387,7 +387,8 @@ def get_optimal_rotation_quat(v_ref: tf.Tensor, v_tar: tf.Tensor) -> tf.Tensor:
     ], -2)                                            # (...,4,4)
 
     # largest eigenvector → quaternion
-    eig_vals, eig_vecs = tf.linalg.eigh(K)
+    with tf.device("/CPU:0"):
+        eig_vals, eig_vecs = tf.linalg.eigh(K)
     q = eig_vecs[..., -1]                              # (...,4)
 
     # normalise & ensure w ≥ 0 for a canonical sign
@@ -559,6 +560,7 @@ def get_defect(
     conjugacy_class = tf.stack([conjugacy_class1, conjugacy_class2], axis=-1)
     return conjugacy_class
 
+
 def defects_from_spin_directory(
     save_dir: str,
     N: int,
@@ -617,8 +619,7 @@ def defects_from_spin_directory(
         return defect
 
     print(
-        "[Binary search in progress] Refining defect snapshots over iterations. "
-        "This may take a few hours.",
+        "[Binary search in progress] Refining defect snapshots over iterations. ",
         flush=True,
     )
 
